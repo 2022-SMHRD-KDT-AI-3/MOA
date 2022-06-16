@@ -38,7 +38,7 @@ public class userSearch extends AppCompatActivity {
     ArrayList<user_data> list;
 
     Button btn_search;
-    Button btn_useradd;
+    Button btn_add;
     EditText et_Sname;
 
     @Override
@@ -49,7 +49,7 @@ public class userSearch extends AppCompatActivity {
         et_Sname = findViewById(R.id.et_Sname);
 
         btn_search = findViewById(R.id.btn_search);
-        btn_useradd = findViewById(R.id.btn_add);
+        btn_add = findViewById(R.id.btn_add);
 
         queue = Volley.newRequestQueue(userSearch.this);
 
@@ -60,6 +60,13 @@ public class userSearch extends AppCompatActivity {
         adapter = new search_adapter("add",userSearch.this, R.layout.search_layout2, list);
 
         userList.setAdapter(adapter);
+
+//        btn_add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(userSearch.this,popup.class);
+//            }
+//        });
 
 
         btn_search.setOnClickListener(new View.OnClickListener() {
@@ -82,25 +89,24 @@ public class userSearch extends AppCompatActivity {
                                 Log.d("NodeConnActivity", "응답받은 데이터: " + response);
 
                                 try {
-                                    JSONObject obj = new JSONObject(response);
-                                    JSONArray array = obj.getJSONArray(response);
+                                    JSONArray array = new JSONArray(response);
 
                                     for (int i = 0; i < array.length(); i++) {
                                         JSONObject dept = array.getJSONObject(i);
 
-                                        JSONArray id = dept.getJSONArray("s_id");
-                                        Log.d(String.valueOf(id), "onResponse: ");
+                                        String S_id = dept.getString("s_id");
+                                        Log.d(S_id, "onResponse: 아이디 검사중");
 
 
                                         String S_name = dept.getString("s_name");
                                         String S_birth = dept.getString("s_birth");
                                         String S_phone = dept.getString("s_phone");
 
-                                        list.add(new user_data(S_name, S_birth, S_phone));
+                                        list.add(new user_data(S_id,S_name, S_birth, S_phone));
 
                                     }
 
-                                    //adapter = new search_adapter("add",userSearch.this, R.layout.search_layout2,list);
+                                    adapter = new search_adapter("add",userSearch.this, R.layout.search_layout2,list);
 
                                     userList.setAdapter(adapter);
 
@@ -128,6 +134,7 @@ public class userSearch extends AppCompatActivity {
 
                         param.put("search_name", search_name);
 
+
                         return param;
                     }
                 };
@@ -137,7 +144,8 @@ public class userSearch extends AppCompatActivity {
 
         });
 
-
+//
+//
     }
 
     public void btnMypage(View view) {

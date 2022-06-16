@@ -5,10 +5,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 
 public class search_viewholder {
 
     private ImageView img;
+    private TextView tv_sid;
     private TextView tv_sname;
     private TextView tv_sbirth;
     private TextView tv_sphone;
@@ -18,6 +21,7 @@ public class search_viewholder {
 
     public search_viewholder(View itemView, String page){
         img = itemView.findViewById(R.id.img);
+        tv_sid = itemView.findViewById(R.id.tv_sid);
         tv_sname = itemView.findViewById(R.id.tv_sname);
         tv_sbirth = itemView.findViewById(R.id.tv_sbirth);
         tv_sphone = itemView.findViewById(R.id.tv_sphone);
@@ -34,6 +38,8 @@ public class search_viewholder {
     public ImageView getImg() {
         return img;
     }
+
+    public TextView getTv_sid(){return tv_sid;}
 
     public TextView getTv_sname(){return tv_sname;}
 

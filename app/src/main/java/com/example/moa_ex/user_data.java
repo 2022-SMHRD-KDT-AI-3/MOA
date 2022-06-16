@@ -9,14 +9,15 @@ public class user_data {
     private String S_phone;
 
 
-    public user_data(String S_name, String S_birth, String S_phone) {
+    public user_data(String S_id, String S_name, String S_birth, String S_phone) {
 
 //        this.imgId = imgId;
-//        this.S_id = S_id;
+        this.S_id = S_id;
         this.S_name = S_name;
         this.S_birth = S_birth;
         this.S_phone = S_phone;
     }
+
 
 
     public int getImgId() {

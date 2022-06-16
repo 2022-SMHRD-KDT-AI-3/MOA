@@ -29,10 +29,6 @@ import java.util.Map;
 //어댑터의 역할 : 데이터와 레이아웃을 바인딩해서 listView에 출력될 수 있도록 변환해주는 역할
 public class search_adapter extends BaseAdapter {
 
-    RequestQueue queue;
-    StringRequest request;
-
-
     Context context;
     int layout;
     ArrayList<user_data> list;
@@ -49,8 +45,8 @@ public class search_adapter extends BaseAdapter {
         inflater =(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public search_adapter(userSearch userSearch, int search_layout2, ArrayList<user_data> list) {
-    }
+//    public search_adapter(userSearch userSearch, int search_layout2, ArrayList<user_data> list) {
+//    }
 
 
     @Override
@@ -84,6 +80,7 @@ public class search_adapter extends BaseAdapter {
         user_data vo = list.get(i);
 
 //        holder.getImg().setImageResource(vo.getImgId());
+        holder.getTv_sid().setText(vo.getS_id());
         holder.getTv_sname().setText(vo.getS_name());
         holder.getTv_sbirth().setText(String.valueOf(vo.getS_birth()));
         holder.getTv_sphone().setText(String.valueOf(vo.getS_phone()));
@@ -94,38 +91,16 @@ public class search_adapter extends BaseAdapter {
             holder.getBtn_add().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent i = new Intent(context,popup.class);
 
-                    int method = Request.Method.POST;
-                    String server_url = "http://172.30.1.2:3000/home/matching";
-                    request = new StringRequest(
-                            method,
-                            server_url,
-                            new Response.Listener<String>() {
-                                @Override
-                                public void onResponse(String response) {
-                                    Log.d("NodeConnActivity", "응답받은 데이터" + response);
-                                }
-                            },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    Log.e("Volley Error", "오류발생>>" + error.toString());
-                                }
-                            }
-                    ) {
-                        @Nullable
-                        @Override
-                        protected Map<String, String> getParams() throws AuthFailureError {
-                            Map<String, String> param = new HashMap<>();
+                    String tv_Sid = vo.getS_id();
+                    i.putExtra("tv_Sid",tv_Sid);
 
-                            String S_id = vo.getS_id();
-                            param.put("S_id", S_id);
-                            return param;
-                        }
+                    Log.d(tv_Sid, "onClick: 되라진짜;;;");
+
+                    context.startActivity(i);
                     };
-                }
-            });
-
+                });
         }else{
 
 //              holder.getBtn_calender().setOnClickListener();

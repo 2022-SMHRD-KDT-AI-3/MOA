@@ -91,7 +91,7 @@ public class userSearch extends AppCompatActivity {
                                         JSONArray id = dept.getJSONArray("s_id");
                                         Log.d(String.valueOf(id), "onResponse: ");
 
-//                                      String S_id = dept.getString("s_id");
+
                                         String S_name = dept.getString("s_name");
                                         String S_birth = dept.getString("s_birth");
                                         String S_phone = dept.getString("s_phone");
@@ -100,10 +100,7 @@ public class userSearch extends AppCompatActivity {
 
                                     }
 
-                                    adapter = new search_adapter(
-                                            userSearch.this,
-                                            R.layout.search_layout2,
-                                            list);
+                                    //adapter = new search_adapter("add",userSearch.this, R.layout.search_layout2,list);
 
                                     userList.setAdapter(adapter);
 

@@ -35,12 +35,19 @@ public class popup extends AppCompatActivity {
 
         btn_add = findViewById(R.id.btn_add);
         btn_cancle = findViewById(R.id.btn_cancle);
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     public void AddEvent(View view){
         // 추가버튼을 누르면 DB의 관리자별 보호자 테이블에 값을 저장
 
-        matching_sRequestPost();
+//        matching_sRequestPost();
 
         queue.add(stringRequest_matching);
         Intent i = new Intent(popup.this, userSearch.class);
@@ -48,49 +55,50 @@ public class popup extends AppCompatActivity {
 
     }
 
+
     public void CancleEvent(View view){
         finish();
     }
 
-    public void matching_sRequestPost() {
-
-        int method = Request.Method.POST;
-        String server_url = "http://172.30.1.42:3000/home/matching";
-
-        stringRequest_matching = new StringRequest(
-                method,
-                server_url,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Log.d("NodeConnActivity", "응답받은 데이터: " + response);
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("Volley Error", "오류발생>>" + error.toString());
-                    }
-                }
-        ) {
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> param = new HashMap<>();
-
-                Intent i = getIntent();
-                String search_name = i.getStringExtra("search_name");
-
-                param.put("search_name",search_name);
-
-                return param;
-
-            }
-        };
-
-        queue.add(stringRequest_matching);
-    }
+//    public void matching_sRequestPost() {
+//
+//        int method = Request.Method.POST;
+//        String server_url = "http://172.30.1.42:3000/home/matching";
+//
+//        stringRequest_matching = new StringRequest(
+//                method,
+//                server_url,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        Log.d("NodeConnActivity", "응답받은 데이터: " + response);
+//
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.e("Volley Error", "오류발생>>" + error.toString());
+//                    }
+//                }
+//        ) {
+//            @Nullable
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> param = new HashMap<>();
+//
+//                Intent i = getIntent();
+//                String search_name = i.getStringExtra("search_name");
+//
+//                param.put("search_name",search_name);
+//
+//                return param;
+//
+//            }
+//        };
+//
+//        queue.add(stringRequest_matching);
+//    }
 
     @Override
     public boolean onTouchEvent(MotionEvent event){

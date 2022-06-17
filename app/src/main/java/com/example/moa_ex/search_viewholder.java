@@ -29,7 +29,7 @@ public class search_viewholder {
         if(page.equals("add")){ //어르신 추가화면
             btn_add = itemView.findViewById(R.id.btn_add);
         }else{ //관리하는 어르신 목록화면
-            btn_calender = itemView.findViewById(R.id.btn_search);
+            btn_calender = itemView.findViewById(R.id.btn_calender);
             btn_alert = itemView.findViewById(R.id.btn_alert);
         }
 

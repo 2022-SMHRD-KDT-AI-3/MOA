@@ -96,15 +96,39 @@ public class search_adapter extends BaseAdapter {
                     String tv_Sid = vo.getS_id();
                     i.putExtra("tv_Sid",tv_Sid);
 
-                    Log.d(tv_Sid, "onClick: 되라진짜;;;");
+                    Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
 
                     context.startActivity(i);
                     };
                 });
         }else{
 
-//              holder.getBtn_calender().setOnClickListener();
-//              holder.getBtn_alert().setOnClickListener();
+              holder.getBtn_calender().setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent i = new Intent(context,calender.class);
+
+                      String tv_Sid = vo.getS_id();
+                      i.putExtra("tv_Sid",tv_Sid);
+
+                      Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
+
+                      context.startActivity(i);
+                  }
+              });
+              holder.getBtn_alert().setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      Intent i = new Intent(context,contacts_ListActivity.class);
+
+                      String tv_Sid = vo.getS_id();
+                      i.putExtra("tv_Sid",tv_Sid);
+
+                      Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
+
+                      context.startActivity(i);
+                  }
+              });
 
         }
 

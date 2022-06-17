@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,10 +42,29 @@ public class userSearch extends AppCompatActivity {
     Button btn_add;
     EditText et_Sname;
 
+
+    ///////////////////////////////////////////////////////
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_NAME = "name";
+    ///////////////////////////////////////////////////////
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usersearch);
+
+
+        ////////////////////////////////
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
+        String A_ID = sharedPreferences.getString(KEY_NAME,null);
+        if(A_ID != null){
+            // textView.setText(ID);
+            Log.d(A_ID, "onCreate: ");
+        }
+        /////////////////////////////////
+
 
         et_Sname = findViewById(R.id.et_Sname);
 
@@ -60,13 +80,6 @@ public class userSearch extends AppCompatActivity {
         adapter = new search_adapter("add",userSearch.this, R.layout.search_layout2, list);
 
         userList.setAdapter(adapter);
-
-//        btn_add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(userSearch.this,popup.class);
-//            }
-//        });
 
 
         btn_search.setOnClickListener(new View.OnClickListener() {

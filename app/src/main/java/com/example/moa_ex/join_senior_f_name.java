@@ -53,7 +53,6 @@ public class join_senior_f_name extends AppCompatActivity {
                     String F_NAME = ed_Pname.getText().toString();
 
                     Intent i = new Intent(join_senior_f_name.this, join_senior_f_phone.class);
-
                     Intent i2 = getIntent();
                     String FAMILY = i2.getStringExtra("FAMILY");
 

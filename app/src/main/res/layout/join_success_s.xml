@@ -29,14 +29,15 @@
 
     <Button
         android:id="@+id/btn_gologin"
-        android:layout_width="201dp"
-        android:layout_height="54dp"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/button_pattern"
+        android:background="@drawable/btn"
         android:onClick="onClickButton1"
         android:text="로그인 하러가기"
         android:textColor="#FDFDFD"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

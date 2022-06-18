@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_a_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -29,12 +29,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    ㅇ<Button
+    ㅇ
+
+    <Button
         android:id="@+id/btn_addFamily"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/button_pattern"
+        android:background="@drawable/btn"
         android:onClick="onClickButton1"
         android:text="보호자 추가하기"
         android:textColor="#FFFFFF"
@@ -50,7 +52,7 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/button_pattern"
+        android:background="@drawable/btn2"
         android:onClick="onClickButton2"
         android:text="대화 시작하기"
         android:textColor="#FFFFFF"

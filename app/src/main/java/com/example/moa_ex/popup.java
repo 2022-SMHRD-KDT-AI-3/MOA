@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -29,6 +30,12 @@ public class popup extends AppCompatActivity {
 
     Button btn_yes, btn_no;
 
+    ///////////////////////////////////////////////////////
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME = "mypref";
+    private static final String KEY_NAME = "name";
+    ///////////////////////////////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +44,15 @@ public class popup extends AppCompatActivity {
         btn_yes = findViewById(R.id.btn_yes);
         btn_no = findViewById(R.id.btn_no);
         queue = Volley.newRequestQueue(popup.this);
+
+        ////////////////////////////////
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String A_ID = sharedPreferences.getString(KEY_NAME, null);
+        if (A_ID != null) {
+            // textView.setText(ID);
+            Log.d(A_ID, "onCreate: ");
+        }
+        /////////////////////////////////
 
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,10 +99,15 @@ public class popup extends AppCompatActivity {
 
                 Intent i = getIntent();
                 String tv_Sid = i.getStringExtra("tv_Sid");
-                Log.d(tv_Sid, "getParams: 아이디 넘어옴??");
+                Log.d(tv_Sid, "getParams: 팝업창에 연결된 s_id");
 
                 param.put("s_id",tv_Sid);
 
+
+                sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+                String A_ID = sharedPreferences.getString(KEY_NAME, null);
+                param.put("a_id",A_ID);
+                Log.i(A_ID,"CHECK!!!!");
 
 
                 return param;

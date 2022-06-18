@@ -1,6 +1,9 @@
 package com.example.moa_ex;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,13 +56,34 @@ public class contacts_deptAdapter extends BaseAdapter {
             view.setTag(holder); // 해당 뷰 객체 상태정보 저장 용도
 
             // 실제 데이터 내용 각각의 view에 담아주기
-            holder.dept_name.setText((vo.getDept_name()));
-            holder.dept_tell.setText(vo.getDept_tel());
+            holder.dept_name.setText((vo.getDept_tel()));
+            holder.dept_tell.setText(vo.getDept_name());
+
+            // 콜버튼 클릭시
+            holder.getBtn_call().setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    contacts_dept_VO vo = list.get(i);
+                    String tell = vo.getDept_tel();
+                    Uri uri = Uri.parse("tel:"+ tell);
+
+                    Intent i = new Intent(Intent.ACTION_DIAL,uri);
+                    context.startActivity(i);
+
+                    Log.d(tell, "call 버튼 눌렀을 때 선택된 번호");
+
+                }
+            });
+
 
         }else{
             holder= (ListVIewHolder) view.getTag();
+
         }
         return view;
+
     }
 
 

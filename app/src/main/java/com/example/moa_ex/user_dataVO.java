@@ -1,6 +1,6 @@
 package com.example.moa_ex;
 
-public class user_data {
+public class user_dataVO {
 
     private int imgId;
     private String S_id;
@@ -9,7 +9,7 @@ public class user_data {
     private String S_phone;
 
 
-    public user_data(String S_id, String S_name, String S_birth, String S_phone) {
+    public user_dataVO(String S_id, String S_name, String S_birth, String S_phone) {
 
 //        this.imgId = imgId;
         this.S_id = S_id;

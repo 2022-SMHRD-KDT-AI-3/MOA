@@ -68,12 +68,10 @@
         android:id="@+id/tv_sbirth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="980516-255555"
+        android:layout_marginStart="10dp"
+        android:text="980516"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/tv_sname"
-        app:layout_constraintEnd_toStartOf="@+id/btn_calender"
         app:layout_constraintStart_toEndOf="@+id/tv_sname" />
 
     <TextView
@@ -81,6 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/tv_sphone"
         app:layout_constraintStart_toEndOf="@+id/tv_sphone" />
 

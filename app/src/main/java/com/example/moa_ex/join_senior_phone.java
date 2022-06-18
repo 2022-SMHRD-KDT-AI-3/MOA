@@ -56,7 +56,7 @@ public class join_senior_phone extends AppCompatActivity {
 
     public void join_senior(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.41:3000/home/user_join";
+        String server_url = "http://172.30.1.2:3000/home/user_join";
 
         stringRequest_join_phone = new StringRequest(
                 method,
@@ -66,6 +66,8 @@ public class join_senior_phone extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("join_senior_phone", "응답받은 데이터" + response);
                         if (response.toString().equals("사용자회원가입 성공!")) {
+                            Toast.makeText(join_senior_phone.this, "가입에 성공했습니다", Toast.LENGTH_SHORT).show();
+
                             Intent i = new Intent(join_senior_phone.this, join_success_s.class);
                             startActivity(i);
                             finish();

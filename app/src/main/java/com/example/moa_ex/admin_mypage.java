@@ -8,10 +8,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,9 +36,11 @@ public class admin_mypage extends AppCompatActivity {
 
     ListView userList;
     search_adapter adapter;
-    ArrayList<user_data> list;
+    ArrayList<user_dataVO> list;
 
     Button btn_previous;
+    String A_ID;
+    TextView textView;
 
     ///////////////////////////////////////////////////////
     SharedPreferences sharedPreferences;
@@ -51,27 +53,31 @@ public class admin_mypage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_mypage);
 
-        ////////////////////////////////
+
+        textView = findViewById(R.id.tv_set_a_id);
+
+        //////////////////////////////////////////////////
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-        String A_ID = sharedPreferences.getString(KEY_NAME,null);
+        A_ID = sharedPreferences.getString(KEY_NAME,null);
         if(A_ID != null){
-            // textView.setText(ID);
             Log.d(A_ID, "onCreate: ");
+            textView.setText(A_ID);
         }
-        /////////////////////////////////
-
-
-        btn_previous = findViewById(R.id.btn_previous);
+        /////////////////////////////////////////////////
 
         queue = Volley.newRequestQueue(admin_mypage.this);
 
+        btn_previous = findViewById(R.id.btn_previous);
         userList = findViewById(R.id.userList);
-
         list = new ArrayList<>();
 
-        adapter = new search_adapter("",admin_mypage.this, R.layout.search_layout_item, list);
+//        tv_a_id.setText();
 
+
+        adapter = new search_adapter("",admin_mypage.this, R.layout.search_layout_item, list);
         userList.setAdapter(adapter);
+
+
 
         matching_sRequestPost();
 
@@ -113,7 +119,7 @@ public class admin_mypage extends AppCompatActivity {
                                 String S_birth = info.getString("s_birth");
                                 String S_phone = info.getString("s_phone");
 
-                                list.add(new user_data(S_id,S_name, S_birth, S_phone));
+                                list.add(new user_dataVO(S_id, S_name, S_birth, S_phone));
 
                             }
 
@@ -139,7 +145,8 @@ public class admin_mypage extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> param = new HashMap<>();
 
-
+                param.put("a_id",A_ID);
+                Log.i(A_ID,"CHECK!!!!");
 
                 return param;
             }

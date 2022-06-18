@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,13 @@ public class login_senior extends AppCompatActivity {
     RequestQueue queue;
     StringRequest request;
 
+    /////////////////////////////////////////
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME2 = "mypref2";
+    private static final String KEY_NAME2 = "name2";
+    ///////////////////////////////////////////
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +48,13 @@ public class login_senior extends AppCompatActivity {
 
         et_id = findViewById(R.id.et_Sname);
         btn_start = findViewById(R.id.btn_start);
-
         btn_join = findViewById(R.id.btn_join);
         queue = Volley.newRequestQueue(login_senior.this);
+
+        //////////////////////////////////
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME2,MODE_PRIVATE);
+        String name2 = sharedPreferences.getString(KEY_NAME2,null);
+        ////////////////////////////////
 
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +71,18 @@ public class login_senior extends AppCompatActivity {
                 if (et_id.getText().toString().equals("")){
                     Toast.makeText(login_senior.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }else{
+
+                    ///////////////////////////////////////
+                    SharedPreferences.Editor editor =sharedPreferences.edit();
+                    editor.putString(KEY_NAME2,et_id.getText().toString());
+                    editor.apply();
+                    /////////////////////////////////////////
+
+                    if(name2 != null){
+                        // 데이터 사용시 호출
+                        Intent intent = new Intent(login_senior.this,join_senior_f_phone.class);
+                        startActivity(intent);
+                    }
                     user_login();
                 }
             }
@@ -67,7 +91,7 @@ public class login_senior extends AppCompatActivity {
     };
     public void user_login(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.41:3000/home/user_login";
+        String server_url = "http://172.30.1.2:3000/home/user_login";
 
         request = new StringRequest(
                 method,
@@ -77,6 +101,7 @@ public class login_senior extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("login_senior","받은데이터 >> "+response);
                         if (response.toString().equals("로그인성공")) {
+                            Toast.makeText(getApplicationContext(), "로그인에 성공하였습니다", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(login_senior.this, userMainActivity.class);
                             startActivity(i);
                             finish();

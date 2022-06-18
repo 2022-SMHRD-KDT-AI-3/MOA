@@ -3,9 +3,13 @@ package com.example.moa_ex;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,9 +35,12 @@ public class login_admin extends AppCompatActivity {
     EditText et_id, et_pw;
     Button btn_start, btn_join;
 
+    /////////////////////////////////////////
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
     private static final String KEY_NAME = "name";
+    ///////////////////////////////////////////
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +56,10 @@ public class login_admin extends AppCompatActivity {
 
         //////////////////////////////////
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-
         String name = sharedPreferences.getString(KEY_NAME,null);
-
-        if(name != null){
-            // 데이터 사용시 호출
-            Intent intent = new Intent(login_admin.this,contacts_ListActivity.class);
-            startActivity(intent);
-        }
         ////////////////////////////////
+
+
 
         // 회원가입 버튼 클릭시
         btn_join.setOnClickListener(new View.OnClickListener() {
@@ -73,14 +75,25 @@ public class login_admin extends AppCompatActivity {
         btn_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ///////////////////////////////////////
-                SharedPreferences.Editor editor =sharedPreferences.edit();
-                editor.putString(KEY_NAME,et_id.getText().toString());
-                editor.apply();
-                /////////////////////////////////////////
+                if (et_id.getText().toString().equals("")) {
+                    Toast.makeText(login_admin.this, "아이디를 입력해주세요", Toast.LENGTH_SHORT).show();
+                } else {
 
-                // 메소드 호출
-                login_adminRequestPost();
+                    ///////////////////////////////////////
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(KEY_NAME, et_id.getText().toString());
+                    editor.apply();
+                    /////////////////////////////////////////
+
+                    if (name != null) {
+                        // 데이터 사용시 호출
+                        Intent intent = new Intent(login_admin.this, userSearch.class);
+                        startActivity(intent);
+                    }
+
+                    // 요청 메소드
+                    login_adminRequestPost();
+                }
             }
         });
 

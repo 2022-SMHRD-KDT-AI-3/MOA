@@ -2,42 +2,25 @@ package com.example.moa_ex;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import androidx.annotation.Nullable;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.moa_ex.user_data;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
-
-
-//어댑터의 역할 : 데이터와 레이아웃을 바인딩해서 listView에 출력될 수 있도록 변환해주는 역할
 public class search_adapter extends BaseAdapter {
 
     Context context;
     int layout;
-    ArrayList<user_data> list;
+    ArrayList<user_dataVO> list;
     LayoutInflater inflater;
-    search_viewholder holder; //list_item.xml에 배치된 View객체들을 초기화하는 역할
+    search_viewholder holder; //View객체 초기화
     String page;
 
 
-    public search_adapter(String page, Context context, int layout, ArrayList<user_data> list) {
+    public search_adapter(String page, Context context, int layout, ArrayList<user_dataVO> list) {
         this.page = page;
         this.context = context;
         this.layout = layout;
@@ -77,9 +60,9 @@ public class search_adapter extends BaseAdapter {
             holder = (search_viewholder) view.getTag();
         }
 
-        user_data vo = list.get(i);
+        user_dataVO vo = list.get(i);
 
-//        holder.getImg().setImageResource(vo.getImgId());
+//      holder.getImg().setImageResource(vo.getImgId());
         holder.getTv_sid().setText(vo.getS_id());
         holder.getTv_sname().setText(vo.getS_name());
         holder.getTv_sbirth().setText(String.valueOf(vo.getS_birth()));
@@ -99,36 +82,36 @@ public class search_adapter extends BaseAdapter {
                     Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
 
                     context.startActivity(i);
-                    };
-                });
+                };
+            });
         }else{
+            // 캘린더 버튼 클릭시 캘린더 페이지로
+            holder.getBtn_calender().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context,CalendarActivity.class);
+                    String tv_Sid = vo.getS_id();
+                    i.putExtra("tv_Sid",tv_Sid);
+                    Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
 
-              holder.getBtn_calender().setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                      Intent i = new Intent(context,calender.class);
+                    context.startActivity(i);
+                }
+            });
 
-                      String tv_Sid = vo.getS_id();
-                      i.putExtra("tv_Sid",tv_Sid);
+            // 연락처 버튼 클릭시 연락처 페이지로
+            holder.getBtn_alert().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context,contacts_ListActivity.class);
 
-                      Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
+                    String tv_Sid = vo.getS_id();
+                    i.putExtra("tv_Sid",tv_Sid);
 
-                      context.startActivity(i);
-                  }
-              });
-              holder.getBtn_alert().setOnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                      Intent i = new Intent(context,contacts_ListActivity.class);
+                    Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
 
-                      String tv_Sid = vo.getS_id();
-                      i.putExtra("tv_Sid",tv_Sid);
-
-                      Log.d(tv_Sid, "추가 버튼 눌렀을 때 선택된 아이디");
-
-                      context.startActivity(i);
-                  }
-              });
+                    context.startActivity(i);
+                }
+            });
 
         }
 

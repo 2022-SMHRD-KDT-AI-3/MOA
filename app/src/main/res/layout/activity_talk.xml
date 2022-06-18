@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:text="님 안녕하세요"
         android:textColor="#FFFFFF"
@@ -41,8 +41,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_s_id"
         app:layout_constraintTop_toBottomOf="@+id/emotions" />
 
     <TextView
@@ -70,5 +69,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/smiling" />
+
+    <TextView
+        android:id="@+id/tv_s_id"
+        android:layout_width="113dp"
+        android:layout_height="44dp"
+        android:text="Text"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView1"
+        app:layout_constraintEnd_toStartOf="@+id/textView1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

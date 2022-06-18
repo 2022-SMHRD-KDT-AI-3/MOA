@@ -21,12 +21,14 @@ public class who_join extends AppCompatActivity {
     }
 
 
+    // 사용자 로그인 페이지로 이동
     public void onClickButton1(View v){
         Intent i = new Intent(this, login_senior.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY); // 액티비티 스택에 쌓이지 않음
         startActivity( i );
     }
 
+    //관리자 로그인 페이지로 이동
     public void onClickButton2(View v){
         Intent i = new Intent(this, login_admin.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY); // 액티비티 스택에 쌓이지 않음

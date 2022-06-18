@@ -5,11 +5,13 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,6 +26,13 @@ public class talk extends AppCompatActivity {
     Intent intent;
     private SpeechRecognizer mRecognizer;
     final int PERMISSION = 1;
+    TextView tv_s_id;
+
+    ///////////////////////////////////////////////////////
+    SharedPreferences sharedPreferences;
+    private static final String SHARED_PREF_NAME2 = "mypref2";
+    private static final String KEY_NAME2 = "name2";
+    ///////////////////////////////////////////////////////
 
 
 
@@ -31,6 +40,18 @@ public class talk extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_talk);
+
+        /////////////////////////////////////////////
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME2, MODE_PRIVATE);
+        String S_ID = sharedPreferences.getString(KEY_NAME2, null);
+        TextView tv_s_id = findViewById(R.id.tv_s_id);
+        if (S_ID != null) {
+            tv_s_id.setText(S_ID);
+            Log.d(S_ID, "onCreate: ");
+        }
+        /////////////////////////////////////////////////
+
+
 
         // 안드로이드 6.0버전 이상인지 체크해서 퍼미션 체크
         if(Build.VERSION.SDK_INT >= 23){

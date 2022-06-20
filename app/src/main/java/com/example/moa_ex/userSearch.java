@@ -96,7 +96,7 @@ public class userSearch extends AppCompatActivity {
             public void search_sRequestPost() {
 
                 int method = Request.Method.POST;
-                String server_url = "http://172.30.1.42:3000/home/userSearch";
+                String server_url = "http://172.30.1.59:3000/home/userSearch";
 
                 list.clear();
 
@@ -180,7 +180,7 @@ public class userSearch extends AppCompatActivity {
         public void all_list() {
 
             int method = Request.Method.POST;
-            String server_url = "http://172.30.1.42:3000/home/userAll";
+            String server_url = "http://172.30.1.59:3000/home/userAll";
 
             stringRequest = new StringRequest(
                     method,

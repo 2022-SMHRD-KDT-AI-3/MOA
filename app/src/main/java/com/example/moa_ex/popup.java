@@ -72,7 +72,7 @@ public class popup extends AppCompatActivity {
 
     public void matching(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.42:3000/home/matching";
+        String server_url = "http://172.30.1.59:3000/home/matching";
 
         R_matching = new StringRequest(
                 method,

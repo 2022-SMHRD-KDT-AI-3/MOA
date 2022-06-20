@@ -91,7 +91,7 @@ public class login_senior extends AppCompatActivity {
     };
     public void user_login(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.2:3000/home/user_login";
+        String server_url = "http://172.30.1.59:3000/home/user_login";
 
         request = new StringRequest(
                 method,

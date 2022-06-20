@@ -70,7 +70,7 @@ public class join_senior_f_phone extends AppCompatActivity {
     public void join_sRequestPost4(){
 
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.2:3000/home/protector_tel";
+        String server_url = "http://172.30.1.59:3000/home/protector_tel";
 
         stringRequest_join_fphone = new StringRequest(
                 method,

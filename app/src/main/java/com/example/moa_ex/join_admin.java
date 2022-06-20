@@ -57,7 +57,7 @@ public class join_admin extends AppCompatActivity {
 
     public void join_adminRequestPost(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.2:3000/home/admin_join";
+        String server_url = "http://172.30.1.59:3000/home/admin_join";
 
         stringRequest_join = new StringRequest(
                 method,

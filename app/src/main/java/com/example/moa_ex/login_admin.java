@@ -104,7 +104,7 @@ public class login_admin extends AppCompatActivity {
         int method = Request.Method.POST;
         String login_id = et_id.getText().toString();
         String login_pw = et_pw.getText().toString();
-        String server_url = "http://172.30.1.2:3000/home/admin_login";
+        String server_url = "http://172.30.1.59:3000/home/admin_login";
 
         stringRequest_login = new StringRequest(
                 method,

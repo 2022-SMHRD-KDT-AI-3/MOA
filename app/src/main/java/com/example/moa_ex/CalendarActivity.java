@@ -243,7 +243,7 @@ public class CalendarActivity extends AppCompatActivity {
     // 대화데이터에서 중복없는 날짜를 출력하는 코드
     public void calendar_request(){
         int method = Request.Method.POST;
-        String serval_url = "http://172.30.1.6:3000/home/calendar_request_date";
+        String serval_url = "http://172.30.1.59:3000/home/calendar_request_date";
 
         StringRequest_add_date1 = new StringRequest(
                 method,
@@ -351,7 +351,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     public void insert_calendar(String s_id,String talk_date, String emotion){
         int method3 = Request.Method.POST;
-        String serval_url3 = "http://172.30.1.6:3000/home/insert_calendar";
+        String serval_url3 = "http://172.30.1.59:3000/home/insert_calendar";
 
         StringRequest_add_date3 = new StringRequest(
                 method3,

@@ -154,7 +154,7 @@ public class contacts_ListActivity extends AppCompatActivity {
     public void deptRequest(){
         int method = Request.Method.GET;
 //       String server_url = "http://172.30.1.2:3000/home/list?name=dept";
-        String server_url = "http://172.30.1.2:3000/home/dept"; // 선경 서버주소
+        String server_url = "http://172.30.1.59:3000/home/dept"; // wifi 서버주소
 
         requestDept = new StringRequest(
 
@@ -206,7 +206,7 @@ public class contacts_ListActivity extends AppCompatActivity {
     public void hospitalRequest(){
         int method = Request.Method.GET;
 //       String server_url = "http://172.30.1.2:3000/home/list?name=dept";
-        String server_url = "http://172.30.1.2:3000/home/hospital"; // 선경 서버주소
+        String server_url = "http://172.30.1.59:3000/home/hospital"; // wifi 서버주소
 
         requestHospital = new StringRequest(
 
@@ -257,7 +257,7 @@ public class contacts_ListActivity extends AppCompatActivity {
     }// hospitalRequest
     public void protectorListRequest(){
         int method = Request.Method.POST;;
-        String server_url = "http://172.30.1.42:3000/home/protectorList"; // 선경 서버주소
+        String server_url = "http://172.30.1.59:3000/home/protectorList"; // wifi 서버주소
 
         requestProtectorList = new StringRequest(
                 method,

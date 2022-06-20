@@ -95,7 +95,7 @@ public class admin_mypage extends AppCompatActivity {
     public void matching_sRequestPost() {
 
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.42:3000/home/userList";
+        String server_url = "http://172.30.1.59:3000/home/userList";
 
         stringRequest = new StringRequest(
                 method,

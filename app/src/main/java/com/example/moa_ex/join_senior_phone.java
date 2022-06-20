@@ -56,7 +56,7 @@ public class join_senior_phone extends AppCompatActivity {
 
     public void join_senior(){
         int method = Request.Method.POST;
-        String server_url = "http://172.30.1.2:3000/home/user_join";
+        String server_url = "http://172.30.1.59:3000/home/user_join";
 
         stringRequest_join_phone = new StringRequest(
                 method,
